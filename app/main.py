@@ -13,6 +13,7 @@ app.mount("/static", StaticFiles(directory=BASE_DIR / "app/static"), name="stati
 
 templates = Jinja2Templates(directory=BASE_DIR / "app/templates")
 
+@app.head("/")
 @app.get("/", response_class=HTMLResponse)
 def index(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
