@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div id="numbers-container" style="display:flex;">
+  {% set n = lines|length %}
+  {% set rows = 25 %}
+  {% set cols = (n // rows) + (1 if n % rows else 0) %}
+
+  {% for col in range(cols) %}
+    <div style="display:flex; flex-direction:column; margin-right:20px;">
+      {% for row in range(rows) %}
+        {% set idx = row + col * rows %}
+        {% if idx < n %}
+          <div class="number">
+            <b>{{ idx + 1 }}</b>
+            {% if (idx + 1) in display %}
+              ：{{ display[idx + 1] }}
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endfor %}
+</div>
+
+<form method="post" class="bottom">
+    <input id="commandInput" name="command" required autofocus="on">
+    <input type="hidden" name="existing_display" value="{{ display }}">
+</form>
+
+</body>
+</html>
