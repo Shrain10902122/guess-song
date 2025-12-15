@@ -17,6 +17,9 @@ body {
   white-space: nowrap;
 }
 
+#numbers-container {
+    padding-left: 30px;
+}
 
 .cell {
     border: 1px solid #ccc;
